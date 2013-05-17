@@ -1,0 +1,6 @@
+<code>
+  {% for row in maze %}
+    {% for cell in row %}{% raw ("##" if cell.is_wall else "&nbsp;&nbsp;") %}{% end %}
+    <br />
+  {% end %}
+</code>
