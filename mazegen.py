@@ -1,6 +1,6 @@
 # Maze generation via randomized Prim's algorithm
 
-import random
+from random import Random
 
 class Cell(object):
     def __init__(self, is_wall):
@@ -18,6 +18,7 @@ def generate_maze(height, width):
             for row in xrange(full_height)]
     wall_list = []
 
+    random = Random()
     random.seed()
 
     start_col = 2*random.randint(0, width-1) + 1
