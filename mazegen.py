@@ -1,10 +1,16 @@
 # Maze generation via randomized Prim's algorithm
 
 import random
-from sys import stdout
+import sys
 
 width = 12
 height = 10
+
+if len(sys.argv) >= 3:
+    if int(sys.argv[1]) >= 3:
+        width = int(sys.argv[1])
+    if int(sys.argv[2]) >= 3:
+        height = int(sys.argv[2])
 
 class Cell(object):
     def __init__(self, is_wall):
@@ -77,5 +83,5 @@ maze[full_height-1][full_width-2].is_wall = False
 
 for row in maze:
     for cell in row:
-        stdout.write(2*('#' if cell.is_wall else ' '))
-    stdout.write('\n')
+        sys.stdout.write(2*('#' if cell.is_wall else ' '))
+    sys.stdout.write('\n')
