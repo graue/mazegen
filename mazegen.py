@@ -28,8 +28,8 @@ def generate_maze(height, width):
 
     class Wall(object):
         def __init__(self, row, col, visited_row, visited_col):
-            # row, col are of the wall; visited_* are of the cell we were visiting
-            # when we added this wall.
+            # row, col are of the wall; visited_* are of the cell we were
+            # visiting when we added this wall.
             self.row = row
             self.col = col
 
@@ -50,19 +50,20 @@ def generate_maze(height, width):
         wall = random.choice(wall_list)
         wall_list.remove(wall)
 
-        # If the wall is still a wall, and there's a cell on the opposite side,
-        # and that opposite cell isn't in the maze yet...
+        # If the wall is still a wall, and there's a cell on the opposite
+        # side, and that opposite cell isn't in the maze yet...
         if (wall.opp_row is not None
                 and maze[wall.row][wall.col].is_wall
                 and not maze[wall.opp_row][wall.opp_col].in_maze):
             new_row = wall.opp_row
             new_col = wall.opp_col
 
-            # ...then strike down the wall and put that opposite cell in the maze,
+            # ...then strike down the wall and put that opposite cell in the
+            # maze,
             maze[wall.row][wall.col].is_wall = False
             maze[new_row][new_col].in_maze = True
 
-            # ...then add the new cell's walls to the wall list.
+            # and add the new cell's walls to the wall list.
             for new_wall in [(new_row+1, new_col), (new_row-1, new_col),
                             (new_row, new_col+1), (new_row, new_col-1)]:
                 if maze[new_wall[0]][new_wall[1]].is_wall:
