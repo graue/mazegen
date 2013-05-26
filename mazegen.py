@@ -34,8 +34,7 @@ def generate_maze(height, width):
             self.col = col
 
             # row, col of the cell on the "opposite" side, if applicable.
-            if (0 < row and row < full_height-1
-                    and 0 < col and col < full_width-1):
+            if (0 < row < full_height-1 and 0 < col < full_width-1):
                 self.opp_row = row + (row - visited_row)
                 self.opp_col = col + (col - visited_col)
             else:
